@@ -3,7 +3,7 @@ import './App.css';
 // import './mycss.css'
 // import * as classstyle from './mycs.module.css'
 import React, { useEffect, useState } from 'react';
-import { Card } from 'antd'
+import {  Card } from 'antd'
 
 function App() {
   const [counter, setCounter] = useState()
@@ -24,7 +24,7 @@ function App() {
       .then(res => {
         if (res && Array.isArray(res) && res.length > 0) {
           setUsers(res)
-        } //typeof res == 'array'
+        }
       })
 
   }
@@ -37,25 +37,20 @@ function App() {
     getData()
   }, [])
 
-  
-
-  const styles = {
-    // 'border: 1 solid #000',
-    // color: 'red',
-    border: '1px solid #000',
-    padding: 10,
-    margin: 'auto',
-    borderRadius: 10,
-    marginBottom: 5,
-    // backgroudColor: '#333'
-  }
   return(
     <>
-      <h2>Users: <button type="" onClick={() => {loadUsers()}}>Load users</button></h2>
-      <div style={{margin: 50, display: 'flex', gap: 16}}>
+      <h2>  Users: <button type="" onClick={() => {loadUsers()}}>Load users</button></h2>
+      <div style={{margin: 50, display: 'grid', gap: 16}}>
         {users.length > 0 &&
           users.map(user => {
-            return <Card title={user.name} key={Math.random()} style={{width: 200}}><p  >{user.email}</p></Card>
+            return( <Card title={user.name} key={Math.random()} headStyle={{backgroundColor: '#AFEEEE', borderColor: '#000000'}} style={{width: 600, margin:10, backgroundColor: '#E0FFFF', borderColor: '#000000'}}>
+              <p  style={{width: 200, margin:10}}><strong style = {{color: '#FF4500'}}>Nickname:</strong> {user.username}</p>
+              <p  style={{width: 300, margin:10}}><strong style = {{color: '#FF8C00'}}>Email:</strong> {user.email}</p>
+              <p  style={{width: 300, margin:10}}><strong style = {{color: '#6A5ACD'}}>Phone:</strong> {user.phone}</p>
+              <p  style={{width: 300, margin:10}}><strong style = {{color: '#006400'}}>Website:</strong> {user.website}</p>
+              
+              </Card>
+              )
           })
         }
       </div>
